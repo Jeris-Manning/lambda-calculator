@@ -1,5 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 
-const Display = () => {
-  return <div>{/* Display any props data here */}</div>;
+const Display = (props) => {
+  const [onScreen, setOnScreen] = useState(0);
+  return <div className="calcDisplay">{onScreen}</div>;
 };
+
+export default Display
