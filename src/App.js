@@ -17,21 +17,43 @@ function App() {
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
 
+const [displayValue, setDisplayValue] = useState('0');
 
+const updateValue = param => {
+  
+  setDisplayValue(displayValue === '0' ? param : displayValue + param);
+}
 
-  return (
+const calculate = () => {
+  setDisplayValue(eval(displayValue));
+}
+
+const negativeNum = () => {
+  setDisplayValue(((eval(displayValue)) * -1).toString());
+}
+
+const percentConvert = () => {
+  setDisplayValue(((eval(displayValue)) * .01).toString());
+  // setDisplayValue(toString(displayValue));
+}
+
+const resetDisplay = () => {
+  setDisplayValue('0');
+}
+
+return (
     <div className='container'>
       <Logo />
       <div className='App'>
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
-        <Display />
+        <Display displayValue={displayValue}/>
         <div className='buttonContainer'>
           <div className='leftButtons'>
-            <Specials />
-            <Numbers />
+            <Specials updateValue={updateValue} resetDisplay = {resetDisplay} percentConvert={percentConvert} negativeNum = {negativeNum} />
+            <Numbers updateValue={updateValue} />
           </div>
           <div>
-            <Operators />
+            <Operators updateValue={updateValue} calculate={calculate} />
           </div>
         </div>
       </div>

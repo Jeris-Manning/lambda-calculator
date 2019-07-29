@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 
 const Display = (props) => {
-  const [onScreen, setOnScreen] = useState(0);
-  return <div className="calcDisplay">{onScreen}</div>;
+    return <div className="calcDisplay">{props.displayValue}</div>;
 };
 
 export default Display
